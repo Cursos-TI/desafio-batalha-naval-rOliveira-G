@@ -78,6 +78,45 @@ int main() {
         printf("Navio vertical fora do tabuleiro\n");
     }
 
+    // ----- NAVIO DIAGONAL -----
+    int linhaD =3, colunaD =2;
+    if(linhaD + tamanho <=10 && colunaD + tamanho <= 10){
+        int podeColocar = 1;
+        for(int i = 0; i < tamanho; i++){
+            if(tabuleiro[linhaD + i][colunaD + i] != 0){
+                podeColocar = 0;
+            }
+        }
+        if(podeColocar){
+            for(int i = 0; i < tamanho; i++){
+                tabuleiro[linhaD + i][colunaD + i] = 3;
+            }
+        }
+        
+        
+    }
+    // ----- NAVIO DIAGONAL 2 -----
+    int linhaD2 = 5;
+    int colunaD2 = 7;
+
+    if(linhaD2 + tamanho <= 10 && colunaD2 - tamanho + 1 >= 0){
+
+        int podeColocar = 1;
+
+        for(int i = 0; i < tamanho; i++){
+            if(tabuleiro[linhaD2 + i][colunaD2 - i] != 0){
+                podeColocar = 0;
+            }
+        }
+
+        if(podeColocar){
+            for(int i = 0; i < tamanho; i++){
+                tabuleiro[linhaD2 + i][colunaD2 - i] = 3;
+            }
+        }
+    }
+
+
     // ----- EXIBE O TABULEIRO -----
     for(int linha = 0; linha < 10; linha++){
         for(int coluna = 0; coluna < 10; coluna++){
