@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 // Desafio Batalha Naval - MateCheck
 // Este código inicial serve como base para o desenvolvimento do sistema de Batalha Naval.
@@ -116,7 +117,105 @@ int main() {
         }
     }
 
+    // ----- MATRIZ CRUZ -----
+    int cruz [5][5];
+    int centro = 2;
 
+    for(int linha = 0; linha < 5 ;linha++){
+        for(int coluna = 0; coluna < 5; coluna++){
+            
+            if (linha == centro || coluna == centro){
+                cruz[linha][coluna] = 1;
+            }else{
+                cruz[linha][coluna] = 0;
+            }
+        }
+    }
+    int origemLinha = 6;
+    int origemColuna = 4;
+
+    for(int linha = 0; linha < 5; linha++){
+        for(int coluna = 0; coluna < 5; coluna++){
+
+            int tabLinha = origemLinha + (linha - centro);
+            int tabColuna = origemColuna + (coluna - centro);
+
+            if(tabLinha >= 0 && tabLinha < 10 &&
+            tabColuna >= 0 && tabColuna < 10){
+
+                if(cruz[linha][coluna] == 1){
+                    tabuleiro[tabLinha][tabColuna] = 5;
+                }
+            }
+        }
+    }
+    // ----- MATRIZ CONE -----
+
+    int cone[5][5];
+    centro = 2;
+    for(int linha = 0; linha < 5; linha++){
+        for(int coluna = 0; coluna < 5; coluna++){
+
+            if(linha <= centro && coluna >= centro - linha && coluna <= centro + linha){
+                cone[linha][coluna] = 1;
+            }
+            else{
+                cone[linha][coluna] = 0;
+            }
+        }
+    }
+    origemLinha = 3;
+    origemColuna = 6;
+
+    for(int linha = 0; linha < 5; linha++){
+        for(int coluna = 0; coluna < 5; coluna++){
+
+            int tabLinha = origemLinha + (linha - centro);
+            int tabColuna = origemColuna + (coluna - centro);
+
+            if(tabLinha >= 0 && tabLinha < 10 &&
+            tabColuna >= 0 && tabColuna < 10){
+
+                if(cone[linha][coluna] == 1){
+                    tabuleiro[tabLinha][tabColuna] = 1;
+                }
+            }
+        }
+    }
+
+    // ----- MATRIZ OCTAEDRO -----
+
+    int octaedro[5][5];
+    centro = 2;
+
+    for(int linha = 0; linha < 5; linha++){
+        for(int coluna = 0; coluna < 5; coluna++){
+
+            if(abs(linha - centro) + abs(coluna - centro) <= centro)
+                octaedro[linha][coluna] = 1;
+            else
+                octaedro[linha][coluna] = 0;
+        }
+    }
+    origemLinha = 4;
+    origemColuna = 4;
+
+    for(int linha = 0; linha < 5; linha++){
+        for(int coluna = 0; coluna < 5; coluna++){
+
+            int tabLinha = origemLinha + (linha - centro);
+            int tabColuna = origemColuna + (coluna - centro);
+
+            if(tabLinha >= 0 && tabLinha < 10 &&
+            tabColuna >= 0 && tabColuna < 10){
+
+                if(octaedro[linha][coluna] == 1){
+                    tabuleiro[tabLinha][tabColuna] = 8;
+                }
+            }
+        }
+    }
+    
     // ----- EXIBE O TABULEIRO -----
     for(int linha = 0; linha < 10; linha++){
         for(int coluna = 0; coluna < 10; coluna++){
